@@ -1,9 +1,15 @@
 pipeline {
     agent any
+    env.MYTOOL_VERSION = '1.33'
     stages {
         stage('Test') {
             steps {
                 sh 'echo "Success!"; exit 0'
+            }
+        }
+        stage('Deneme') {
+            steps {
+                sh 'echo "$MYTOOL_VERSION"; exit 0'
             }
         }
     }
