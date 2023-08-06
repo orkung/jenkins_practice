@@ -2,17 +2,17 @@ def timeInMillis = currentBuild.timeInMillis
 def imageTag = "ogunay/alpine:" + timeInMillis
 @Library("shared-library") _
 pipeline {
-   agent {
-      docker {
-         image 'alpine:latest'
-         any
-         args '-v $HOME:/home/jenkins'
-      }
-   }
+   agent none
    environment {
       DH_CREDS=credentials('dh-creds')
    }
    stages {
+      stage('get image')
+         agent {
+            docker {
+               image 'alpine:latest'
+               args '-v $HOME:/home/jenkins'
+      }
       stage('Hello') {
          steps {
             sh """
