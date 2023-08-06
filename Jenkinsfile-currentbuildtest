@@ -12,7 +12,8 @@ pipeline {
             docker {
                image 'alpine:latest'
                args '-v $HOME:/home/jenkins'
-      }
+            }
+         }
       stage('Hello') {
          steps {
             sh """
