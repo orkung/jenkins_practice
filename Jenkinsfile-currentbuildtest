@@ -7,13 +7,14 @@ pipeline {
       DH_CREDS=credentials('dh-creds')
    }
    stages {
-      stage('get image')
+      stage('get image') {
          agent {
             docker {
                image 'alpine:latest'
                args '-v $HOME:/home/jenkins'
             }
          }
+      }
       stage('Hello') {
          steps {
             sh """
