@@ -1,34 +1,12 @@
 pipeline {
-    agent any
-    env.MYTOOL_VERSION = '1.33'
-    stages {
-        stage('Test') {
-            steps {
-                sh 'echo "Success!"; exit 0'
-            }
-        }
-        stage('Deneme') {
-            steps {
-                sh 'echo "$MYTOOL_VERSION"; exit 0'
-            }
-        }
-    }
-    post {
-        always {
-            echo 'This will always run'
-        }
-        success {
-            echo 'This will run only if successful'
-        }
-        failure {
-            echo 'This will run only if failed'
-        }
-        unstable {
-            echo 'This will run only if the run was marked as unstable'
-        }
-        changed {
-            echo 'This will run only if the state of the Pipeline has changed'
-            echo 'For example, if the Pipeline was previously failing but is now successful'
-        }
-    }
+   agent {
+      docker { image 'node:18.17.0-alpine3.8' }
+   }
+   stages {
+      stage('Test') {
+         steps {
+            sh 'node --version'
+         }
+      }
+   }
 }
