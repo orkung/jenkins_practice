@@ -1,3 +1,8 @@
-FROM node:18.17.0-alpine3.18
+# Base image
+FROM debian
 
-RUN apk add -U subversion
+# image configuration
+RUN /bin/bash -c 'echo this would generally be apt-get or other system conf'
+ENV myCustomEnvVar="this is a sample" \
+    otherEnvVar="This is also a sample."
+
