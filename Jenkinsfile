@@ -7,7 +7,7 @@ pipeline {
          steps {
             echo 'Hello World!'
             sh 'echo myCustomEnvVar = $myCustomEnvVar'
-            sh 'echo otherEnvVar = $otherEnvVar'
+            echo 'otherEnvVar = $otherEnvVar'
          }
       }
    }
